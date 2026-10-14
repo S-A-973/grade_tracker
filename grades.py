@@ -1,3 +1,5 @@
+
+# A list of dictionaries to store all the students data. ie names and scores.
 student_score = [
     {"name":"Amina", "score": 88},
     {"name":"Brian", "score": 72},
@@ -11,50 +13,54 @@ student_score = [
     {"name":"James", "score": 84}
 
 ]
-def user_search_db():
+
+def ask_for_name():
+# Gets an input from the user: basically asks for students name
     while True:
-        name = input("Please enter the students name: ").strip().title()
+        name = input("Please enter the students name: ").strip().capitalize()
         if name.isalpha():
             return name
-            break
         else:
-            print("Invalid please enter actual students name")
+            print("Invalid please use words to enter students name")
+
 
 def student_search():
+# Using the provided name to search the dictionaries
     while True:
-        name = user_search_db()
+        name = ask_for_name()
 
         for student in student_score:
             if student.get("name") == name:
-                print (f"{name} found ")
-                return student
-                
+                return student    
         else:    
             print("Student not found, try again")
-            
+
+       
 def get_letter_grade(score):
+# Converts a students score into a grade 
+    if not 0 <= score <= 100: return "Invalid"
+    if score >= 90: return "A"
+    if score >= 80: return "B"
+    if score >= 70: return "C"
+    if score >= 60: return "D"
+    return "F"
     
-    if 90 <= score < 100 : return "A"
-    elif 80 <= score :return  "B"
-    elif score >= 70: return "C"
-    elif score >= 60: return "D"
-    elif score < 60: return "F"
-    else : return "Invalid"
+def main():
+    student = student_search()
+    name = student["name"]
+    score = student["score"]
+    grade = get_letter_grade(score)
+    print(f"{name}'s score is {score}, and their grade is {grade}")
 
-student = student_search()
-name = student["name"]
-score = student["score"]
-grade = get_letter_grade(score)
+if __name__ == "__main__":
+    main()
 
 
 
-print(f" {name}'s score is {score}, and their grade is {grade}")
+    
 
 
-        
 
-
- 
 
 
 
