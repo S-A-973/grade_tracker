@@ -1,4 +1,3 @@
-##This a grade tracker system to challange my knowledge on loops, lists, functions, variables.
 student_score = [
     {"name":"Amina", "score": 88},
     {"name":"Brian", "score": 72},
@@ -28,32 +27,38 @@ def student_search():
         for student in student_score:
             if student.get("name") == name:
                 print (f"{name} found ")
-                return name
+                return student
+                
         else:    
             print("Student not found, try again")
+            
+def get_letter_grade(score):
+    
+    if 90 <= score < 100 : return "A"
+    elif 80 <= score :return  "B"
+    elif score >= 70: return "C"
+    elif score >= 60: return "D"
+    elif score < 60: return "F"
+    else : return "Invalid"
 
+student = student_search()
+name = student["name"]
+score = student["score"]
+grade = get_letter_grade(score)
+
+
+
+print(f" {name}'s score is {score}, and their grade is {grade}")
 
 
         
 
-student_search()
+
  
 
 
 
 
 
-"""def get_letter_grade (): 
-    for student, score in student_grades.items():
-        if 90 >= score < 100 : return "A"
-        elif 80 >= score :return  "B"
-        elif score >= 70: return "C"
-        elif score >= 60: return "D"
-        elif score < 60: return "F"
-        else : return "Invalid"
 
-letter_grade = get_letter_grade()
-for student, score in student_grades.items():
-    print (student, score, letter_grade)
-        
-"""
+
